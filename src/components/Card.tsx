@@ -7,17 +7,22 @@ import { useEffect, useState } from "react";
 interface Props {
   key: string;
   name: string;
-  attack?: number;
-  defense?: number;
   url?: string;
 }
 
-const Card = ({ name, attack = 0, defense = 0, url }: Props) => {
-  const [pokemonDetail, setPokemonDetail] = useState<any>(null);
+interface PokemonDetail {
+  nameAttack?: string;
+  levelAttack?: string | number;
+  nameDefense?: string;
+  levelDefense?: string | number;
+}
+
+const Card = ({ name, url }: Props) => {
+  const [pokemonDetail, setPokemonDetail] = useState<PokemonDetail>({});
 
   useEffect(() => {
     const fetchPokemonDetail = async () => {
-      const pokemonDetail = await getPokemonDetail({ urlPokemon: url });
+      const pokemonDetail = await getPokemonDetail({ urlPokemon: url || '' });
       setPokemonDetail(pokemonDetail);
     }
 
@@ -26,7 +31,7 @@ const Card = ({ name, attack = 0, defense = 0, url }: Props) => {
     }
 
   }, [url]);
-  const idPokemon: any = url?.split('/')[6];
+  const idPokemon = url?.split('/')[6];
   const urlImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${idPokemon}.svg`;
 
   return (

@@ -1,4 +1,3 @@
-import { getPokemonList } from "@/api/getPokemonList";
 import ContainerPokemon from "@/components/ContainerPokemon";
 
 export default async function Home() {

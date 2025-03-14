@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
 interface Props {
-  urlPokemon: any;
+  urlPokemon: string;
 }
 
 interface dataReturn {
