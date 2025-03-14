@@ -62,8 +62,8 @@ const ContainerPokemon = () => {
 
   return (
     <>
-      <div className="grid grid-cols-4 gap-2 py-10">
-        <div className="col-span-3 flex">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 py-10 px-4">
+        <div className="col-span-1 md:col-span-3 flex">
           <label className="mr-2">Buscar por nombre: </label>
           <input
             type="text"
@@ -95,7 +95,7 @@ const ContainerPokemon = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
         {pokemonListNew.map(({ name, url }) => (
           <Card
             key={name}
