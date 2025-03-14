@@ -1,8 +1,9 @@
 'use client';
 
 import { useEffect, useState } from "react";
-import Card from "./Card";
 import { getPokemonList } from "@/api/getPokemonList";
+import Card from "./Card";
+import Pagination from "./Pagination";
 
 interface Pokemon {
   name: string;
@@ -105,23 +106,13 @@ const ContainerPokemon = () => {
         ))}
       </div>
 
-      <div className="flex justify-center mt-8 mb-4 gap-4">
-        <button 
-          onClick={goToPrevPage} 
-          disabled={!hasPrevPage}
-          className={`px-4 py-2 rounded ${!hasPrevPage ? 'bg-gray-300 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-600 text-white'}`}
-        >
-          Anterior
-        </button>
-        <span className="flex items-center">Página {page}</span>
-        <button 
-          onClick={goToNextPage} 
-          disabled={!hasNextPage}
-          className={`px-4 py-2 rounded ${!hasNextPage ? 'bg-gray-300 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-600 text-white'}`}
-        >
-          Siguiente
-        </button>
-      </div>
+      <Pagination
+        goToPrevPage={goToPrevPage}
+        hasPrevPage={hasPrevPage}
+        goToNextPage={goToNextPage}
+        hasNextPage={hasNextPage}
+        page={page}
+      />
     </>
   )
 }
